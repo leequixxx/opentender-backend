@@ -466,7 +466,7 @@ let importBuyers = (items, cb) => {
 			if (valid && item.lots && item.lots.length) {
 				item.lots.forEach((lot) => {
 					if (lot.estimatedPrice) {
-						buyer.body.company.totalValueOfContracts += lot.estimatedPrice.netAmountNational
+						buyer.body.company.totalValueOfContracts += lot.finalPrice.netAmountNational
 					}
 				})
 			}
@@ -761,7 +761,7 @@ let importSuppliers = (items, cb) => {
 			if (valid && item.lots && item.lots.length) {
 				item.lots.forEach((lot) => {
 					if (lot.estimatedPrice) {
-						supplier.body.company.totalValueOfContracts += lot.estimatedPrice.netAmountNational
+						supplier.body.company.totalValueOfContracts += lot.finalPrice.netAmountNational
 					}
 				})
 			}
