@@ -463,12 +463,8 @@ let importBuyers = (items, cb) => {
 				})
 			}
 
-			if (valid && item.lots && item.lots.length) {
-				item.lots.forEach((lot) => {
-					if (lot.estimatedPrice) {
-						buyer.body.company.totalValueOfContracts += lot.estimatedPrice.netAmountNational
-					}
-				})
+			if (valid) {
+			    buyer.body.company.totalValueOfContracts += item.finalPrice.netAmountNational
 			}
 		})
 		buyer.body.company.totalValueOfContracts /= 100
@@ -758,13 +754,9 @@ let importSuppliers = (items, cb) => {
 					supplier.ot.indicator[key] += item.ot.indicator[key]
 				})
 			}
-			if (valid && item.lots && item.lots.length) {
-				item.lots.forEach((lot) => {
-					if (lot.estimatedPrice) {
-						supplier.body.company.totalValueOfContracts += lot.estimatedPrice.netAmountNational
-					}
-				})
-			}
+			      if (valid) {
+				supplier.body.company.totalValueOfContracts += item.finalPrice.netAmountNational;
+			      }
 		})
 		supplier.body.company.totalValueOfContracts /= 100
 		supplier.body.company.totalValueOfContracts = Utils.roundValueTwoDecimals(supplier.body.company.totalValueOfContracts)
